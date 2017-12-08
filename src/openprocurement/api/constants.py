@@ -33,6 +33,8 @@ def read_json(name):
 CPV_CODES = read_json('cpv.json')
 CPV_CODES.append('99999999-9')
 DK_CODES = read_json('dk021.json')
+ATC_CODES = read_json('atc.json')
+INN_CODES = read_json('inn.json')
 #DKPP_CODES = read_json('dkpp.json')
 ORA_CODES = [i['code'] for i in read_json('OrganisationRegistrationAgency.json')['data']]
 WORKING_DAYS = read_json('working_days.json')
