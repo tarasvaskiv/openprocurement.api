@@ -7,6 +7,7 @@ with open(os.path.join(here, 'README.rst')) as f:
     README = f.read()
 
 requires = [
+    'openprocurement.standards.prozorro',
     'barbecue',
     'chaussette',
     'cornice',
