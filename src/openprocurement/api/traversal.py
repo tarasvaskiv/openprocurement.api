@@ -14,7 +14,6 @@ class Root(object):
     __acl__ = [
         # (Allow, Everyone, ALL_PERMISSIONS),
         (Allow, 'g:admins', ALL_PERMISSIONS),
-        (Allow, 'g:bots', 'upload_tender_documents')
     ]
 
     def __init__(self, request):
