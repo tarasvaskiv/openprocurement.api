@@ -31,7 +31,6 @@ def read_json(name):
     return loads(data)
 
 CPV_CODES = read_json('cpv.json')
-CPV_CODES.append('99999999-9')
 FUNDERS = [(i['scheme'], i['id']) for i in read_json('funders.json')['data']]
 #DKPP_CODES = read_json('dkpp.json')
 ORA_CODES = [i['code'] for i in read_json('OrganisationRegistrationAgency.json')['data']]
