@@ -16,7 +16,7 @@ from schematics.types.compound import (ModelType, DictType,
                                        ListType as BaseListType)
 from schematics.types.serializable import serializable
 
-from openprocurement.api.utils import get_now, set_parent, get_schematics_document
+from openprocurement.api.utils import get_now, set_parent, get_schematics_document, validate_dkpp
 from openprocurement.api.constants import (
     CPV_CODES, ORA_CODES, TZ
 )
@@ -400,7 +400,7 @@ class Item(Model):
     description_en = StringType()
     description_ru = StringType()
     classification = ModelType(CPVClassification)
-    additionalClassifications = ListType(ModelType(Classification), default=list())
+    additionalClassifications = ListType(ModelType(Classification), default=list(), required=True, min_size=1, validators=[validate_dkpp])
     unit = ModelType(Unit)  # Description of the unit which the good comes in e.g. hours, kilograms
     quantity = IntType()  # The number of units required
     deliveryDate = ModelType(Period)
