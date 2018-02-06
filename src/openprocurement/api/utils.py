@@ -566,8 +566,8 @@ def decrypt(uuid, name, key):
 
 
 def set_modetest_titles(item):
-    if not item.title or u'[ТЕСТУВАННЯ]' not in item.title:
-        item.title = u'[ТЕСТУВАННЯ] {}'.format(item.title or u'')
+    if not item.title or u'[REGIM DE TESTARE]' not in item.title:
+        item.title = u'[REGIM DE TESTARE] {}'.format(item.title or u'')
     if not item.title_en or u'[TESTING]' not in item.title_en:
         item.title_en = u'[TESTING] {}'.format(item.title_en or u'')
     if not item.title_ru or u'[ТЕСТИРОВАНИЕ]' not in item.title_ru:
