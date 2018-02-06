@@ -316,7 +316,7 @@ class Document(Model):
         'contractSigned', 'contractArrangements', 'contractSchedule',
         'contractAnnexe', 'contractGuarantees', 'subContract',
         'eligibilityCriteria', 'contractProforma', 'commercialProposal',
-        'qualificationDocuments', 'eligibilityDocuments',
+        'qualificationDocuments', 'eligibilityDocuments', 'technicalProposal',
     ])
     title = StringType(required=True)  # A title of the document.
     title_en = StringType()
