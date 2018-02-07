@@ -26,20 +26,9 @@ Contents:
    errors
    options
    dates
-   upload
-   tutorial
-   standard/index
-   tenders
    procuring
-   bidding
-   meat
-   lots
-   qualification
-   questions
-   complaints
    performance
    cluster
-   2pc
    acceleration
    reference
 
