@@ -18,6 +18,7 @@ from time import time as ttime
 from urllib import quote, unquote, urlencode
 from urlparse import urlparse, urlunsplit, parse_qsl
 from uuid import uuid4
+from hashlib import sha512
 from webob.multidict import NestedMultiDict
 from binascii import hexlify, unhexlify
 from Crypto.Cipher import AES
@@ -25,6 +26,7 @@ from cornice.util import json_error
 from json import dumps
 
 from schematics.exceptions import ValidationError
+from schematics.types.base import StringType
 from couchdb_schematics.document import SchematicsDocument
 from openprocurement.api.events import ErrorDesctiptorEvent
 from openprocurement.api.constants import LOGGER
@@ -293,6 +295,12 @@ def set_ownership(item, request):
     if not item.get('owner'):
         item.owner = request.authenticated_userid
     item.owner_token = generate_id()
+    acc = {'token': item.owner_token}
+    if isinstance(getattr(type(item), 'transfer_token', None), StringType):
+        transfer = generate_id()
+        item.transfer_token = sha512(transfer).hexdigest()
+        acc['transfer'] = transfer
+    return acc
 
 
 def check_document(request, document, document_container):
