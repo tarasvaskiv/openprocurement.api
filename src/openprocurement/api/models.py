@@ -267,14 +267,12 @@ class Location(Model):
 
     def validate_latitude(self, data, latitude):
         if latitude:
-            if type(latitude) is str:
-                latitude_str = latitude
-            else:
-                latitude_str = "{:.14f}".format(latitude)
-            valid_latitude = COORDINATES_REG_EXP.match(str(latitude_str))
+            if not isinstance(latitude, basestring):
+                latitude = "{:.14f}".format(latitude)
+            valid_latitude = COORDINATES_REG_EXP.match(str(latitude))
             if (valid_latitude is not None and
-                    valid_latitude.group() == str(latitude_str)):
-                if not -90 <= float(latitude_str) <= 90:
+                    valid_latitude.group() == str(latitude)):
+                if not -90 <= float(latitude) <= 90:
                     raise ValidationError(
                         u"Invalid value. Latitude must be between -90 and 90 degree.")
             else:
@@ -283,7 +281,7 @@ class Location(Model):
 
     def validate_longitude(self, data, longitude):
         if longitude:
-            if not isinstance(longitude, str):
+            if not isinstance(longitude, basestring):
                 longitude = "{:.14f}".format(longitude)
             valid_longitude = COORDINATES_REG_EXP.match(str(longitude))
             if (valid_longitude is not None and
